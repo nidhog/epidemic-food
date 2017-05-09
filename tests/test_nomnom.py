@@ -6,8 +6,10 @@ from test_settings import test_nomnom_settings as settings
 import sys, os
 nomnom_path = os.path.dirname(os.getcwd())
 sys.path.append(nomnom_path)
-from nomnom import foodstore
-
+try:
+    from nomnom import foodstore
+except ImportError:
+    raise ImportError("Please go to the 'tests/' directory before running this test")
 
 class BasicTest(unittest.TestCase):
     def test_instantiation(self):
@@ -133,5 +135,6 @@ class BasicTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
 
 
